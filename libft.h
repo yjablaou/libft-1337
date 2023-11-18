@@ -1,8 +1,9 @@
 #ifndef LIBFT_H
 # define LIBFT_H
 
-# include <stddef.h>
-# include <stdlib.h>
+#include <unistd.h>
+#include <stddef.h>
+#include <stdlib.h>
 
 typedef struct s_list
 {
@@ -11,6 +12,10 @@ typedef struct s_list
 }	t_list;
 
 /* libc */
+void ft_putstr_fd(char *s, int fd);
+void ft_putendl_fd(char *s, int fd);
+void ft_putchar_fd(char c, int fd);
+void ft_putnbr_fd(int n, int fd);
 int		ft_isalpha(int c);
 int		ft_isdigit(int c);
 int		ft_isalnum(int c);
