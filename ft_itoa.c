@@ -3,21 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yojablao <yojablao@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yojablao <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 20:22:51 by yojablao          #+#    #+#             */
-/*   Updated: 2023/11/13 08:12:56 by yojablao         ###   ########.fr       */
+/*   Updated: 2023/11/11 22:24:19 by yojablao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	size(long long n)//N =25.4
+int	size(long long n)
 {
 	int	i;
 
 	i = 0;
-	if (n < 0)
+	if (n <= 0)
 		i = 1;
 	while (n != 0)
 	{

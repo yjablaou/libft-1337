@@ -6,7 +6,7 @@
 /*   By: yojablao <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 04:30:16 by yojablao          #+#    #+#             */
-/*   Updated: 2023/11/11 19:42:59 by yojablao         ###   ########.fr       */
+/*   Updated: 2023/11/17 01:04:58 by yojablao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,16 @@ char	*ft_strtrim(char const *s1, char const *set)
 	{
 		i = 0;
 		j = ft_strlen(s1);
+		if (j == 0)
+			return (ft_strdup(""));
 		while (s1[i] && ft_strchr(set, s1[i]))
 			i++;
 		while (s1[j - 1] && ft_strchr(set, s1[j - 1]) && j > i)
 			j--;
-		str = (char *)malloc(sizeof(char) * (j - i + 1));
+		str = (char *)malloc((j - i + 1));
 		if (str)
-			ft_strlcpy(str, &s1[i], j - i + 1);
+			ft_strlcpy (str, &s1[i], j - i + 1);
+		return (str);
 	}
-	return (str);
+	return (NULL);
 }
