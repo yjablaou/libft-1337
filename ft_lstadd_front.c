@@ -1,9 +1,22 @@
-void ft_lstadd_front(t_list **lst, t_list *new)
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_lstadd_front.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yojablao <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/11/19 14:40:29 by yojablao          #+#    #+#             */
+/*   Updated: 2023/11/21 18:42:52 by yojablao         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "libft.h"
+
+void	ft_lstadd_front(t_list **lst, t_list *new)
 {
-    t_list *tmp;
+	t_list	*tmp;
 
-    tmp = (*lst);
-
-    (*lst) = new;
-    (*lst)->next = tmp;
+	tmp = *lst;
+	*lst = new;
+	(*lst)->next = tmp;
 }

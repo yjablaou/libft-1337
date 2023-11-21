@@ -6,7 +6,7 @@
 /*   By: yojablao <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 19:51:21 by yojablao          #+#    #+#             */
-/*   Updated: 2023/11/19 11:43:25 by yojablao         ###   ########.fr       */
+/*   Updated: 2023/11/19 14:17:43 by yojablao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ char	**ft_split(char const *s, char c)
 		return (str);
 	}
 	word_count = count_words (s, c);
-	str = (char **)malloc((word_count + 1) * sizeof(char *));
+	str = (char **)ft_calloc((word_count + 1) * sizeof(char *), 1);
 	if (str == NULL)
 		return (NULL);
 	i = 0;
