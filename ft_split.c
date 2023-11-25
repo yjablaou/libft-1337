@@ -6,47 +6,65 @@
 /*   By: yojablao <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 19:51:21 by yojablao          #+#    #+#             */
-/*   Updated: 2023/11/19 14:17:43 by yojablao         ###   ########.fr       */
+/*   Updated: 2023/11/25 20:47:39 by yojablao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
 
-size_t	count_words(const char *s, char c)
+static char	*sub(const char *s, char *str, size_t start, size_t size)
 {
-	size_t	word_count;
 	size_t	i;
-	size_t	len;
 
+	if (str == 0)
+		return (NULL);
 	i = 0;
-	word_count = 0;
-	len = ft_strlen(s);
-	while (s[i] == c)
-		i++;
-	while (i < len)
+	while (start < size)
 	{
-		if (s[i] != c)
-		{
-			word_count++;
-			while (i < len && s[i] != c)
-				i++;
-		}
-		else
-		{
-			while (i < len && s[i] == c)
-				i++;
-		}
+		str[i] = s[start];
+		i++;
+		start++;
 	}
-	return (word_count);
+	str[i] = '\0';
+	return (str);
 }
 
-ssize_t	norm(char const *s, char c, char **str, size_t i)
+void	free_it(char **str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
+		free (str[i++]);
+	free (str);
+}
+
+static size_t	count_words(const char *s, char c)
+{
+	int		i;
+	size_t	count;
+
+	i = 0;
+	count = 0;
+	while (s[i])
+	{
+		while (s[i] == c && s[i])
+			i++;
+		if (s[i])
+			count++;
+		while (s[i] != c && s[i])
+			i++;
+	}
+	return (count);
+}
+
+static ssize_t	norm(const char *s, char c, char **str, size_t i)
 {
 	size_t	start;
 	size_t	l;
 
 	l = 0;
+	start = 0;
 	while (s[i])
 	{
 		if (s[i] != c)
@@ -54,13 +72,14 @@ ssize_t	norm(char const *s, char c, char **str, size_t i)
 			start = i;
 			while (s[i] && s[i] != c)
 				i++;
-			str[l++] = ft_substr(s, start, i - start);
-			if (str[l - 1] == NULL)
+			str[l] = (char *)malloc(((i - start) + 1) * sizeof(char)); 
+			if (str[l] == NULL)
 			{
-				while (--l >= 0)
-					free(str[l]);
+				free_it(str);
 				return (-1);
 			}
+			str[l] = sub(s, str[l], start, i);
+			l++;
 		}
 		else
 			i++;
@@ -75,23 +94,16 @@ char	**ft_split(char const *s, char c)
 	size_t	i;
 	size_t	word_count;
 
-	if (s[0] == '\0')
-	{
-		str = malloc(sizeof(char *));
-		str[0] = NULL;
-		return (str);
-	}
+	if (!s)
+		return (NULL);
 	word_count = count_words (s, c);
-	str = (char **)ft_calloc((word_count + 1) * sizeof(char *), 1);
+	str = malloc ((word_count + 1) * sizeof(char *));
 	if (str == NULL)
 		return (NULL);
 	i = 0;
 	l = norm(s, c, str, i);
 	if (l == -1) 
-	{
-		free (str);
 		return (NULL);
-	}
 	str[l] = NULL;
 	return (str);
 }

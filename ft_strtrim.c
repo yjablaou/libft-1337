@@ -6,33 +6,61 @@
 /*   By: yojablao <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 04:30:16 by yojablao          #+#    #+#             */
-/*   Updated: 2023/11/17 01:04:58 by yojablao         ###   ########.fr       */
+/*   Updated: 2023/11/25 20:57:39 by yojablao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
+static int	find_front(char const *set, char c)
+{
+	int	i;
+
+	i = 0;
+	while (set[i])
+	{
+		if (set[i] == c)
+		{
+			return (1);
+		}
+		i++;
+	}
+	return (0);
+}
+
+static int	find_back(const char *set, const char *s1, int i)
+{
+	int	l;
+
+	l = ft_strlen(s1) - 1;
+	while (i <= l && find_front (set, s1[l]) == 1)
+		l--;
+	return (l);
+}
+
 char	*ft_strtrim(char const *s1, char const *set)
 {
-	size_t	i;
-	size_t	j;
-	char	*str;
+	int		i;
+	int		l;
+	char	*p;
+	int		k;
 
-	str = 0;
-	if (s1 != 0 && set != 0)
+	i = 0;
+	k = 0;
+	if (!s1)
+		return (NULL);
+	while (s1[i] && find_front(set, s1[i]))
+		i++;
+	l = find_back(set, s1, i);
+	p = malloc((l - i) + 2);
+	if (p == 0)
+		return (NULL);
+	while (l >= i)
 	{
-		i = 0;
-		j = ft_strlen(s1);
-		if (j == 0)
-			return (ft_strdup(""));
-		while (s1[i] && ft_strchr(set, s1[i]))
-			i++;
-		while (s1[j - 1] && ft_strchr(set, s1[j - 1]) && j > i)
-			j--;
-		str = (char *)malloc((j - i + 1));
-		if (str)
-			ft_strlcpy (str, &s1[i], j - i + 1);
-		return (str);
+		p[k] = s1[i];
+		k++;
+		i++;
 	}
-	return (NULL);
+	p[k] = '\0';
+	return (p);
 }

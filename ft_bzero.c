@@ -20,7 +20,7 @@ void	ft_bzero(void	*ptr, size_t	n)
 	i = 0;
 	while (i < n)
 	{
-		p[i] = '\0';
+		p[i] = 0;
 		i++;
 	}
 }
