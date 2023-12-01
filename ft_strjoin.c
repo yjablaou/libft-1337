@@ -6,7 +6,7 @@
 /*   By: yojablao <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 04:32:23 by yojablao          #+#    #+#             */
-/*   Updated: 2023/11/11 04:36:09 by yojablao         ###   ########.fr       */
+/*   Updated: 2023/12/01 05:24:01 by yojablao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,12 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	size_t	lc;
 	char	*p;
 
+	if (s1 && !s2)
+		return ((char *) s1);
+	if (!s1 && s2)
+		return ((char *) s2);
+	if (!s1 || !s2)
+		return (NULL);
 	lc = ft_strlen(s2);
 	lp = ft_strlen(s1);
 	p = (char *)malloc(lp + lc + 1);

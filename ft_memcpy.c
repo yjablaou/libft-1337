@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <string.h>
 
 void	*ft_memcpy(void *to, const void *fr, size_t n)
 {
@@ -28,7 +27,7 @@ void	*ft_memcpy(void *to, const void *fr, size_t n)
 	}
 	while (i < n)
 	{
-		((unsigned char *)to)[i] = ((unsigned char *)fr)[i];
+		((char *)to)[i] = ((char *)fr)[i];
 		i++;
 	}
 	return (to);

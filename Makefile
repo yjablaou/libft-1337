@@ -1,3 +1,15 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: yojablao <marvin@42.fr>                    +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2023/12/01 05:29:41 by yojablao          #+#    #+#              #
+#    Updated: 2023/12/01 05:29:42 by yojablao         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 SRCS			=	ft_isalnum.c ft_isprint.c ft_memcmp.c  ft_putchar_fd.c ft_split.c \
 					ft_strlcat.c ft_strncmp.c ft_substr.c ft_atoi.c ft_isalpha.c \
 					ft_itoa.c ft_memcpy.c  ft_putendl_fd.c ft_strchr.c  ft_strlcpy.c \
@@ -18,23 +30,26 @@ CFLAGS			= -Wall -Wextra -Werror
 
 NAME			= libft.a
 
-all:			$(NAME)
+all:	${NAME}
 
 %.o : %.c libft.h
-	$(CC) $(CFLAGS) -c $< -o $@
+	@$(CC) $(CFLAGS) -c $< -o $@
+	@echo "compile will be done"
 
 $(NAME):		$(OBJS)
-				ar rcs $(NAME) $(OBJS)
+				@ar rc $(NAME) $(OBJS)
+				@echo "libft.a is creat"
 
 clean:
-				$(RM) $(OBJS) $(BONUS_OBJS)
+				@$(RM) $(OBJS) $(BONUS_OBJS)
+				@echo "*.o file is removed"
 
 fclean:			clean
-				$(RM) $(NAME)
+				@$(RM) $(NAME)
+				@echo "libft.a is removed"
 
 re:				fclean $(NAME)
 
-bonus:			$(OBJS) $(BONUS_OBJS)
-				@ar rcs $(NAME) $(OBJS) $(BONUS_OBJS)
-
-.PHONY:			all clean fclean re bonus
+bonus:			$(BONUS_OBJS)
+				@ar rc $(NAME) $(OBJS) $(BONUS_OBJS)
+				@echo "libft.a is creat"

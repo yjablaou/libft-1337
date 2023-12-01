@@ -36,9 +36,9 @@ int	ft_atoi(const char *str)
 {
 	int					i;
 	int					sign;
-	unsigned long int	result;
-	unsigned long int	test;
-	unsigned long		holder;
+	long				result;
+	long				test;
+	long				holder;
 
 	sign = signe(str, &i);
 	result = 0;
