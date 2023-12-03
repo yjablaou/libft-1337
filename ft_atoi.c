@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-int	signe(const char *str, int *c)
+static int	signe(const char *str, int *c)
 {
 	int	sign;
 	int	i;

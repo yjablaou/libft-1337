@@ -6,7 +6,7 @@
 #    By: yojablao <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/01 05:29:41 by yojablao          #+#    #+#              #
-#    Updated: 2023/12/01 05:29:42 by yojablao         ###   ########.fr        #
+#    Updated: 2023/12/03 02:20:33 by yojablao         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ SRCS			=	ft_isalnum.c ft_isprint.c ft_memcmp.c  ft_putchar_fd.c ft_split.c \
 					ft_strnstr.c ft_tolower.c ft_bzero.c   ft_isascii.c \
 					ft_memmove.c ft_putnbr_fd.c  ft_strdup.c  ft_strlen.c  ft_strrchr.c \
 					ft_toupper.c ft_calloc.c  ft_isdigit.c ft_memchr.c  ft_memset.c  \
-					ft_putstr_fd.c  ft_strjoin.c ft_strmapi.c ft_strtrim.c ft_striteri.c\
+					ft_putstr_fd.c  ft_strjoin.c ft_strmapi.c ft_strtrim.c ft_striteri.c
 
 OBJS			= $(SRCS:.c=.o)
 
@@ -33,21 +33,70 @@ NAME			= libft.a
 all:	${NAME}
 
 %.o : %.c libft.h
-	@$(CC) $(CFLAGS) -c $< -o $@
-	@echo "compile will be done"
+				@$(CC) $(CFLAGS) -c $< -o $@
+				@echo "#compile $< to $@ #0"
 
 $(NAME):		$(OBJS)
-				@ar rc $(NAME) $(OBJS)
-				@echo "libft.a is creat"
+			@ar rc $(NAME) $(OBJS)
+			@clear
+			@echo ""
+			@echo "                   ("
+			@echo "	                     )     ("
+			@echo "               ___...(-------)-....___"
+			@echo '           .-""       )    (          ""-.'
+			@echo "      .-''''|-._             )         _.-|"
+			@echo '     /  .--.|   `""---...........---""`   |'
+			@echo "    /  /    |                             |"
+			@echo "    |  |    |          yojablao           |"
+			@echo "     \  \   |                             |"
+			@echo "      '\ '\ |                             |"
+			@echo "        '\ '| 		AKA---->Mintos    |"
+			@echo "        _/ /\                             /"
+			@echo "       (__/  \                           /"
+			@echo '    _..---""` \                         /`""---.._'
+			@echo " .-'           \                       /          '-."
+			@echo ":               '-.__             __.-'              :"
+			@echo ':                  ) ""---...---"" (                :'
+			@echo "\'._                '"--...___...--"'              _.'"
+			@echo '   \""--..__                              __..--""/'
+			@echo "     '._     """----.....______.....----"""         _.'"
+			@echo '         ""--..,,_____            _____,,..--"""'''
+			@echo '                      """------"""'
+			@echo "#libft.a is creat#"
 
 clean:
 				@$(RM) $(OBJS) $(BONUS_OBJS)
 				@echo "*.o file is removed"
 
-fclean:			clean
-				@$(RM) $(NAME)
-				@echo "libft.a is removed"
-
+fclean:		clean
+		@$(RM) $(NAME)
+		@clear
+		@echo ""
+		@echo "                   ("
+		@echo "	                     )     ("
+		@echo "               ___...(-------)-....___"			
+		@echo '           .-""       )    (          ""-.'
+		@echo "      .-''''|-._             )         _.-|"
+		@echo '     /  .--.|   `""---...........---""`   |'
+		@echo "    /  /    |                             |"
+		@echo "    |  |    |                             |"
+		@echo "     \  \   |                             |"
+		@echo "      '\ '\ |        yojablao             |"
+		@echo "        '\ '|                             |"
+		@echo "        _/ /\                             /"
+		@echo "       (__/  \                           /"
+		@echo '    _..---""` \                         /`""---.._'
+		@echo " .-'           \                       /          '-."
+		@echo ":               '-.__             __.-'              :"
+		@echo ':                  ) ""---...---"" (                :'
+		@echo "\'._                '"--...___...--"'              _.'"
+		@echo '   \""--..__                              __..--""/'
+		@echo "     '._     """----.....______.....----"""         _.'"
+		@echo '         ""--..,,_____            _____,,..--"""'''
+		@echo '                      """------"""'
+		@sleep 0.5
+		@echo "libft.a is removed"
+		
 re:				fclean $(NAME)
 
 bonus:			$(BONUS_OBJS)

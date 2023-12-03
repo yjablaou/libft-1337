@@ -6,7 +6,7 @@
 /*   By: yojablao <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 19:51:21 by yojablao          #+#    #+#             */
-/*   Updated: 2023/11/26 14:56:54 by yojablao         ###   ########.fr       */
+/*   Updated: 2023/12/01 19:15:51 by yojablao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static char	*sub(const char *s, char *str, size_t start, size_t size)
 	return (str);
 }
 
-void	free_it(char **str)
+static void	free_it(char **str)
 {
 	int	i;
 
