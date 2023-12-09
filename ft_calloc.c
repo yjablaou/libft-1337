@@ -6,7 +6,7 @@
 /*   By: yojablao <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/29 22:43:16 by yojablao          #+#    #+#             */
-/*   Updated: 2023/11/29 22:50:14 by yojablao         ###   ########.fr       */
+/*   Updated: 2023/12/07 10:08:32 by yojablao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,6 @@ void	*ft_calloc(size_t count, size_t size)
 {
 	void	*ptr;
 
-	if (count && size && count > (4294967295 / size))
-		return (NULL);
 	ptr = malloc(count * size);
 	if (!ptr)
 		return (NULL);

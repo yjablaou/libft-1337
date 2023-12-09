@@ -6,13 +6,13 @@
 /*   By: yojablao <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 20:22:51 by yojablao          #+#    #+#             */
-/*   Updated: 2023/11/11 22:24:19 by yojablao         ###   ########.fr       */
+/*   Updated: 2023/12/07 06:19:24 by yojablao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	size(long long n)
+static int	size(long long n)
 {
 	int	i;
 

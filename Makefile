@@ -5,100 +5,44 @@
 #                                                     +:+ +:+         +:+      #
 #    By: yojablao <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/12/01 05:29:41 by yojablao          #+#    #+#              #
-#    Updated: 2023/12/03 02:20:33 by yojablao         ###   ########.fr        #
+#    Created: 2023/12/07 15:49:31 by yojablao          #+#    #+#              #
+#    Updated: 2023/12/09 09:26:17 by yojablao         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS			=	ft_isalnum.c ft_isprint.c ft_memcmp.c  ft_putchar_fd.c ft_split.c \
-					ft_strlcat.c ft_strncmp.c ft_substr.c ft_atoi.c ft_isalpha.c \
-					ft_itoa.c ft_memcpy.c  ft_putendl_fd.c ft_strchr.c  ft_strlcpy.c \
-					ft_strnstr.c ft_tolower.c ft_bzero.c   ft_isascii.c \
-					ft_memmove.c ft_putnbr_fd.c  ft_strdup.c  ft_strlen.c  ft_strrchr.c \
-					ft_toupper.c ft_calloc.c  ft_isdigit.c ft_memchr.c  ft_memset.c  \
-					ft_putstr_fd.c  ft_strjoin.c ft_strmapi.c ft_strtrim.c ft_striteri.c
+NAME	=	libft.a
+HEAD	= 	libft.h
+CC		=	cc
+CFLAGS	=	-Wall -Wextra -Werror
+AR		=	ar rc
+RM		=	rm -f
+SRCS	=	ft_isalpha.c ft_isdigit.c ft_isalnum.c ft_isascii.c ft_isprint.c ft_strlen.c \
+			ft_toupper.c ft_tolower.c ft_strchr.c ft_strrchr.c ft_strncmp.c\
+			ft_strlcpy.c ft_memset.c ft_bzero.c ft_memcpy.c ft_memchr.c ft_memcmp.c ft_memmove.c ft_strlcat.c \
+			ft_strnstr.c ft_atoi.c ft_calloc.c ft_strdup.c ft_substr.c ft_strjoin.c ft_strtrim.c ft_split.c \
+			ft_itoa.c ft_strmapi.c ft_striteri.c ft_putchar_fd.c ft_putstr_fd.c ft_putendl_fd.c ft_putnbr_fd.c 
+			
+BONUS	=	ft_lstnew_bonus.c ft_lstadd_front_bonus.c ft_lstsize_bonus.c ft_lstlast_bonus.c \
 
-OBJS			= $(SRCS:.c=.o)
+OBJS	=	$(SRCS:%c=%o)
 
-BONUS			=	ft_lstadd_back_bonus.c ft_lstadd_front_bonus.c ft_lstlast_bonus.c \
-					ft_lstnew_bonus.c ft_lstsize_bonus.c
-BONUS_OBJS		= $(BONUS:.c=.o)
+B_OBJS	=	$(BONUS:%c=%o)
 
-CC				= cc
-RM				= rm -f
-CFLAGS			= -Wall -Wextra -Werror
+%o	:	%c $(HEAD)
+			$(CC) $(CFLAGS) -c -o $@ $<
 
-NAME			= libft.a
+$(NAME)	:	$(OBJS)
+			ar rc $(NAME) $(OBJS)
+			
+all	:	$(NAME)
 
-all:	${NAME}
-
-%.o : %.c libft.h
-				@$(CC) $(CFLAGS) -c $< -o $@
-				@echo "#compile $< to $@ #0"
-
-$(NAME):		$(OBJS)
-			@ar rc $(NAME) $(OBJS)
-			@clear
-			@echo ""
-			@echo "                   ("
-			@echo "	                     )     ("
-			@echo "               ___...(-------)-....___"
-			@echo '           .-""       )    (          ""-.'
-			@echo "      .-''''|-._             )         _.-|"
-			@echo '     /  .--.|   `""---...........---""`   |'
-			@echo "    /  /    |                             |"
-			@echo "    |  |    |          yojablao           |"
-			@echo "     \  \   |                             |"
-			@echo "      '\ '\ |                             |"
-			@echo "        '\ '| 		AKA---->Mintos    |"
-			@echo "        _/ /\                             /"
-			@echo "       (__/  \                           /"
-			@echo '    _..---""` \                         /`""---.._'
-			@echo " .-'           \                       /          '-."
-			@echo ":               '-.__             __.-'              :"
-			@echo ':                  ) ""---...---"" (                :'
-			@echo "\'._                '"--...___...--"'              _.'"
-			@echo '   \""--..__                              __..--""/'
-			@echo "     '._     """----.....______.....----"""         _.'"
-			@echo '         ""--..,,_____            _____,,..--"""'''
-			@echo '                      """------"""'
-			@echo "#libft.a is creat#"
+bonus:	$(B_OBJS)
+			ar rc $(NAME) $(B_OBJS)
 
 clean:
-				@$(RM) $(OBJS) $(BONUS_OBJS)
-				@echo "*.o file is removed"
+			$(RM) $(OBJS) $(B_OBJS)
 
-fclean:		clean
-		@$(RM) $(NAME)
-		@clear
-		@echo ""
-		@echo "                   ("
-		@echo "	                     )     ("
-		@echo "               ___...(-------)-....___"			
-		@echo '           .-""       )    (          ""-.'
-		@echo "      .-''''|-._             )         _.-|"
-		@echo '     /  .--.|   `""---...........---""`   |'
-		@echo "    /  /    |                             |"
-		@echo "    |  |    |                             |"
-		@echo "     \  \   |                             |"
-		@echo "      '\ '\ |        yojablao             |"
-		@echo "        '\ '|                             |"
-		@echo "        _/ /\                             /"
-		@echo "       (__/  \                           /"
-		@echo '    _..---""` \                         /`""---.._'
-		@echo " .-'           \                       /          '-."
-		@echo ":               '-.__             __.-'              :"
-		@echo ':                  ) ""---...---"" (                :'
-		@echo "\'._                '"--...___...--"'              _.'"
-		@echo '   \""--..__                              __..--""/'
-		@echo "     '._     """----.....______.....----"""         _.'"
-		@echo '         ""--..,,_____            _____,,..--"""'''
-		@echo '                      """------"""'
-		@sleep 0.5
-		@echo "libft.a is removed"
-		
-re:				fclean $(NAME)
+fclean:	clean
+			$(RM) $(NAME)
 
-bonus:			$(BONUS_OBJS)
-				@ar rc $(NAME) $(OBJS) $(BONUS_OBJS)
-				@echo "libft.a is creat"
+re:	fclean all

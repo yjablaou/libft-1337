@@ -6,7 +6,7 @@
 /*   By: yojablao <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 04:30:16 by yojablao          #+#    #+#             */
-/*   Updated: 2023/11/25 20:57:39 by yojablao         ###   ########.fr       */
+/*   Updated: 2023/12/08 13:20:33 by yojablao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,7 @@ static int	find_front(char const *set, char c)
 	while (set[i])
 	{
 		if (set[i] == c)
-		{
 			return (1);
-		}
 		i++;
 	}
 	return (0);
@@ -47,7 +45,7 @@ char	*ft_strtrim(char const *s1, char const *set)
 
 	i = 0;
 	k = 0;
-	if (!s1)
+	if (!s1 || !set)
 		return (NULL);
 	while (s1[i] && find_front(set, s1[i]))
 		i++;

@@ -34,6 +34,6 @@ size_t	ft_strlcat(char *dst, const char *src, size_t size)
 	dst[l] = '\0';
 	if (ld < size)
 		return (ld + ls);
-	else 
+	else
 		return (size + ls);
 }

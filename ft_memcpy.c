@@ -21,10 +21,6 @@ void	*ft_memcpy(void *to, const void *fr, size_t n)
 		return (NULL);
 	if (to == fr)
 		return (to);
-	if (ft_memcmp(to, fr, n) == 0)
-	{
-		return (to);
-	}
 	while (i < n)
 	{
 		((char *)to)[i] = ((char *)fr)[i];

@@ -6,7 +6,7 @@
 /*   By: yojablao <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 19:51:21 by yojablao          #+#    #+#             */
-/*   Updated: 2023/12/01 19:15:51 by yojablao         ###   ########.fr       */
+/*   Updated: 2023/12/07 09:44:02 by yojablao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,13 +29,10 @@ static char	*sub(const char *s, char *str, size_t start, size_t size)
 	return (str);
 }
 
-static void	free_it(char **str)
+static void	free_it(char **str, ssize_t	l)
 {
-	int	i;
-
-	i = 0;
-	while (str[i])
-		free (str[i++]);
+	while (l >= 0)
+		free (str[l--]);
 	free (str);
 }
 
@@ -72,10 +69,10 @@ static ssize_t	norm(const char *s, char c, char **str, size_t i)
 			start = i;
 			while (s[i] && s[i] != c)
 				i++;
-			str[l] = (char *)malloc(((i - start) + 1) * sizeof(char)); 
+			str[l] = (char *)malloc(((i - start) + 1) * sizeof(char));
 			if (str[l] == NULL)
 			{
-				free_it(str);
+				free_it(str, l);
 				return (-1);
 			}
 			str[l] = sub(s, str[l], start, i);
@@ -102,7 +99,7 @@ char	**ft_split(char const *s, char c)
 		return (NULL);
 	i = 0;
 	l = norm(s, c, str, i);
-	if (l == -1) 
+	if (l == -1)
 		return (NULL);
 	str[l] = NULL;
 	return (str);
